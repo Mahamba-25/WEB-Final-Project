@@ -46,7 +46,7 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
 });
 
 
-// // Sign Up Form Submission with hashing
+// TODO Sign Up Form Submission with hashing
 // document.getElementById('signup-form').addEventListener('submit', (e) => {
 //   e.preventDefault();
 //   const name = document.getElementById('signup-name').value.trim();
@@ -120,3 +120,35 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
     alert('Please fill in all fields.');
   }
 });
+
+/*
+// TODO Contact Form Submission with API
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+
+  if (name && email && message) {
+    // Placeholder for a real backend API call
+    fetch('/submit-contact-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, message })
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert('Thank you for reaching out! We will get back to you soon.');
+        document.getElementById('contact-form').reset();
+      })
+      .catch(error => {
+        alert('There was an error sending your message. Please try again.');
+      });
+  } else {
+    alert('Please fill in all fields.');
+  }
+});
+
+ */
