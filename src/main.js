@@ -84,19 +84,25 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
 });
 
 // Game Search Functionality
+let debounceTimeout;
 document.getElementById('game-search').addEventListener('input', (e) => {
-  const query = e.target.value.toLowerCase();
-  const games = document.querySelectorAll('.game');
-  games.forEach(game => {
-    const title = game.querySelector('h3').textContent.toLowerCase();
-    const genre = game.getAttribute('data-genre').toLowerCase();
-    if (title.includes(query) || genre.includes(query)) {
-      game.style.display = 'block';
-    } else {
-      game.style.display = 'none';
-    }
-  });
+  clearTimeout(debounceTimeout);  // Clear the previous timeout
+
+  debounceTimeout = setTimeout(() => {
+    const query = e.target.value.toLowerCase();
+    const games = document.querySelectorAll('.game');
+    games.forEach(game => {
+      const title = game.querySelector('h3').textContent.toLowerCase();
+      const genre = game.getAttribute('data-genre').toLowerCase();
+      if (title.includes(query) || genre.includes(query)) {
+        game.style.display = 'block';
+      } else {
+        game.style.display = 'none';
+      }
+    });
+  }, 300);  // Delay the search by 300 milliseconds
 });
+
 
 // Contact Form Submission
 document.getElementById('contact-form').addEventListener('submit', (e) => {
