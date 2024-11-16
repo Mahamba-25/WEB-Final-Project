@@ -1,0 +1,111 @@
+/* CSS Variables for Light and Dark Modes */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --btn-bg: #f0f0f0;
+    --btn-text: #333333;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --btn-bg: #333333;
+    --btn-text: #ffffff;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+header nav a {
+    color: var(--bg-color);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-color: var(--btn-text);
+    color: var(--btn-bg);
+}
+
+.btn:focus {
+    outline: 2px solid var(--btn-text);
+    outline-offset: 2px;
+}
+
+/* Section Styles */
+main section {
+    padding: 2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+#games .game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#games .game {
+    width: calc(33.333% - 1rem);
+    text-align: center;
+}
+
+#games .game img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+#team .team-list {
+    display: flex;
+    gap: 1rem;
+}
+
+#team .team-member {
+    text-align: center;
+}
+
+#team .team-member img {
+    border-radius: 50%;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}

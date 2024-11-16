@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max&Mah Studio</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <h1>Max&Mah Studio</h1>
+        <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+    </div>
+    <nav>
+        <a href="#games">Games</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Authentication Section -->
+    <section id="auth">
+        <h2>User Authentication</h2>
+        <div class="forms-container">
+            <form id="signup-form" class="form-container">
+                <h3>Sign Up</h3>
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" required>
+
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" required>
+
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+
+            <form id="login-form" class="form-container">
+                <h3>Log In</h3>
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+
+                <button type="submit" class="btn">Log In</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games">
+        <h2>Our Games</h2>
+        <input type="text" id="game-search" placeholder="Search games..." class="search-bar">
+        <div id="game-list" class="game-list">
+            <div class="game" data-genre="action">
+                <img src="Iustitia.png" alt="Game 1">
+                <h3>Iustitia</h3>
+                <p>Action-packed adventure.</p>
+            </div>
+            <div class="game" data-genre="puzzle">
+                <img src="Romans%20Rows.png" alt="Game 2">
+                <h3>Romance Rows</h3>
+                <p>A challenging puzzle experience.</p>
+            </div>
+            <div class="game" data-genre="top-down">
+                <img src="Undergraduate%20Monsters.png" alt="Game 3">
+                <h3>Undergraduate Monsters</h3>
+                <p></p>
+            </div>
+            <div class="game" data-genre="metroidvania">
+                <img src="Bugs%20of%20Life.png" alt="Game 4">
+                <h3>Bugs of Life</h3>
+                <p></p>
+            </div>
+            <div class="game" data-genre="visual novel">
+                <img src="Christmas%20Deer.png" alt="Game 5">
+                <h3>Christmas Deer</h3>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <h2>Meet the Team</h2>
+        <div class="team-list">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Team Member 1">
+                <h3>Makhambet Saparbek</h3>
+                <p>Game Designer, Team Leader, Level Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Team Member 2">
+                <h3>Maxim Kolodin</h3>
+                <p>Engine Developer, Lead Programmer, Level Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Team Member 3">
+                <h3>Arsen Serikbai</h3>
+                <p>Artist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form" class="form-container">
+            <label for="contact-name">Name:</label>
+            <input type="text" id="contact-name" required>
+
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" required>
+
+            <label for="contact-message">Message:</label>
+            <textarea id="contact-message" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Max&Mah Studio. All Rights Reserved.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
