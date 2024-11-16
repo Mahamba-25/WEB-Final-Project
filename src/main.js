@@ -20,8 +20,8 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
-// User Authentication
-const users = [];
+// User Authentication                                                // TODO user authentication still needs fix
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Sign Up Form Submission
 document.getElementById('signup-form').addEventListener('submit', (e) => {
@@ -37,6 +37,7 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
       alert('User already exists. Please log in.');
     } else {
       users.push({ name, email, password });
+      localStorage.setItem('users', JSON.stringify(users));  // Save users array to localStorage
       alert('Sign-up successful! You can now log in.');
       document.getElementById('signup-form').reset();
     }
@@ -65,7 +66,6 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
 //   }
 // });
 
-
 // Log In Form Submission
 document.getElementById('login-form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -75,9 +75,12 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
   const user = users.find(u => u.email === email && u.password === password);
   if (user) {
     alert(`Welcome back, ${user.name}!`);
-    // Redirect to profile page or display user details
-    // For simplicity, we'll just reset the form
-    document.getElementById('login-form').reset();
+
+    // Store user data in localStorage for the profile page
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Redirect to profile page
+    window.location.href = 'profile.html';
   } else {
     alert('Invalid email or password.');
   }
@@ -100,7 +103,7 @@ document.getElementById('game-search').addEventListener('input', (e) => {
         game.style.display = 'none';
       }
     });
-  }, 300);  // Delay the search by 300 milliseconds
+  }, 300);  // Delay the search by 300 milliseconds, for improvement purposes
 });
 
 

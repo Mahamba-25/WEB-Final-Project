@@ -1,0 +1,28 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+<h1>User Profile</h1>
+<p>Name: <span id="user-name"></span></p>
+<p>Email: <span id="user-email"></span></p>
+
+<script>
+    // Retrieve user data from localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+        // Display user information
+        document.getElementById('user-name').textContent = user.name;
+        document.getElementById('user-email').textContent = user.email;
+    } else {
+        // If no user data found, redirect to login page
+        window.location.href = 'login.html';
+    }
+</script>
+</body>
+</html>
