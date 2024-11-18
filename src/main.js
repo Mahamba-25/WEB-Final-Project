@@ -20,7 +20,10 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
-// User Authentication                                                // TODO user authentication still needs fix
+// TODO Sign Up Form Submission with hashing
+// Yeah, tried this sh..., better not
+
+// User Authentication
 const users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Sign Up Form Submission
@@ -31,11 +34,12 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
   const password = document.getElementById('signup-password').value.trim();
 
   if (name && email && password) {
-    // Simple validation to check if user already exists
+    // Check if user already exists
     const existingUser = users.find(user => user.email === email);
     if (existingUser) {
       alert('User already exists. Please log in.');
     } else {
+      // Store user with plain text password
       users.push({ name, email, password });
       localStorage.setItem('users', JSON.stringify(users));  // Save users array to localStorage
       alert('Sign-up successful! You can now log in.');
@@ -47,24 +51,6 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
 });
 
 
-// TODO Sign Up Form Submission with hashing
-// document.getElementById('signup-form').addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   const name = document.getElementById('signup-name').value.trim();
-//   const email = document.getElementById('signup-email').value.trim();
-//   const password = document.getElementById('signup-password').value.trim();
-//
-//   if (name && email && password) {
-//     // Simple hashing (Base64 encoding for this example)
-//     const hashedPassword = btoa(password);  // In production, use a secure hashing algorithm like bcrypt
-//
-//     // Store hashed password
-//     users.push({ name, email, password: hashedPassword });
-//     alert('Sign-up successful!');
-//   } else {
-//     alert('Please fill in all fields.');
-//   }
-// });
 
 // Log In Form Submission
 document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -74,7 +60,7 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
 
   const user = users.find(u => u.email === email && u.password === password);
   if (user) {
-    alert(`Welcome back, ${user.name}!`);
+    alert(`Welcome, ${user.name}!`);
 
     // Store user data in localStorage for the profile page
     localStorage.setItem('user', JSON.stringify(user));
@@ -85,6 +71,7 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
     alert('Invalid email or password.');
   }
 });
+
 
 // Game Search Functionality
 let debounceTimeout;
@@ -106,8 +93,7 @@ document.getElementById('game-search').addEventListener('input', (e) => {
   }, 300);  // Delay the search by 300 milliseconds, for improvement purposes
 });
 
-
-// Contact Form Submission
+// Contact Form Submission with Actual MockAPI
 document.getElementById('contact-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('contact-name').value.trim();
@@ -115,43 +101,29 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
   const message = document.getElementById('contact-message').value.trim();
 
   if (name && email && message) {
-    // Store the message in localStorage or send it to a server
-    // For simplicity, we'll just display an alert
-    alert('Thank you for reaching out! We will get back to you soon.');
-    document.getElementById('contact-form').reset();
-  } else {
-    alert('Please fill in all fields.');
-  }
-});
-
-/*
-// TODO Contact Form Submission with API
-document.getElementById('contact-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('contact-name').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const message = document.getElementById('contact-message').value.trim();
-
-  if (name && email && message) {
-    // Placeholder for a real backend API call
-    fetch('/submit-contact-form', {
+    fetch('https://673b8119339a4ce4451c71a7.mockapi.io/api/mahamba/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email, message })
+      body: JSON.stringify({ email, message }),
     })
-      .then(response => response.json())
-      .then(data => {
-        alert('Thank you for reaching out! We will get back to you soon.');
-        document.getElementById('contact-form').reset();
-      })
-      .catch(error => {
-        alert('There was an error sending your message. Please try again.');
-      });
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('API Response:', data);
+          alert('Thank you for reaching out! We will get back to you soon.');
+          document.getElementById('contact-form').reset();
+        })
+        .catch(error => {
+          console.error('API Error:', error);
+          alert('An error occurred. Please try again later.');
+        });
   } else {
     alert('Please fill in all fields.');
   }
 });
-
- */
